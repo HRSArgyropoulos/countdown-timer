@@ -2,9 +2,9 @@
 
 const TOTAL_SEC = 10 * 60; // Initial value: 600 sec = 10 minutes
 
-const timer = document.getElementById('timer');
+const timer       = document.getElementById('timer');
 const startButton = document.getElementById('start');
-const stopButton = document.getElementById('stop');
+const stopButton  = document.getElementById('stop');
 const resetButton = document.getElementById('reset');
 const pauseButton = document.getElementById('pause');
 
@@ -15,12 +15,8 @@ let interval; // Use to hold a reference to the interval
 function toMinAndSec(sec) {
   console.log(sec);
 
-  let m = Math.floor(sec / 60);
-  let s = sec % 60;
-
-  if (m < 10) { m = '0' + m; }
-
-  if (s < 10) { s = '0' + s; }
+  let m = (Math.floor(sec / 60) + '').padStart(2, '0');
+  let s = (sec % 60 + '').padStart(2, '0');
 
   return `${m}:${s}`;
 }
