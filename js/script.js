@@ -9,7 +9,7 @@ const resetButton = document.getElementById('reset');
 const pauseButton = document.getElementById('pause');
 
 let remainingSec; // Use to store the remaining seconds
-let interval; // Use to hold a reference to the interval
+let interval=0; // Use to hold a reference to the interval
 
 // Helper function to transform this: '100' (seconds) to this '01:40'
 function toMinAndSec(sec) {
@@ -29,6 +29,7 @@ function show() {
 // Decrease remaining time and show the result
 // If there is no remaining time, stop the timer
 function tick() {
+  console.log("Interval",interval);
   if (remainingSec > 0) {
     remainingSec -= 1;
   } else {
@@ -44,7 +45,7 @@ function tick() {
 
 startButton.addEventListener('click', () => {
   // TODO [OK]: Set an interval to 1 sec, that calls the 'tick' function. Store the interval reference to the global 'interval' variable, so that you can clear it afterwards.
-  interval = window.setInterval(tick, 1 * 1000);
+  if (interval===0) interval=window.setInterval(tick, 1 * 1000); //If we press start again do not execute another interval
 });
 
 /*
@@ -56,6 +57,7 @@ stopButton.addEventListener('click', stop = () => { //modified arrow function na
   remainingSec = TOTAL_SEC;
   // TODO [OK]: Stop/Clear the interval
   clearInterval(interval);
+  interval=0;
   // TODO [OK]: Use the appopriate (existing) function to show the remaining time on the page
   show();
 });
@@ -78,6 +80,7 @@ resetButton.addEventListener('click', () => {
 pauseButton.addEventListener('click', () => {
   // TODO [OK]: Clear the interval
   clearInterval(interval);
+  interval=0;
 });
 
 /*
