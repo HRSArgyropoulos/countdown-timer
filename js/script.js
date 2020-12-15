@@ -1,6 +1,6 @@
 'use strict';
 
-const TOTAL_SEC = 10 * 60; // Initial value: 600 sec = 10 minutes
+const TOTAL_SEC = 1 * 10; // Initial value: 10 sec
 
 const timer       = document.getElementById('timer');
 const startButton = document.getElementById('start');
@@ -32,7 +32,8 @@ function tick() {
   if (remainingSec > 0) {
     remainingSec -= 1;
   } else {
-    // TODO: Stop/Clear the interval
+    // TODO [OK]: Stop/Clear the interval
+    stop(); //see stopButton
   }
   show();
 }
@@ -42,17 +43,21 @@ function tick() {
  * -------------------- */
 
 startButton.addEventListener('click', () => {
-  // TODO: Set an interval to 1 sec, that calls the 'tick' function. Store the interval reference to the global 'interval' variable, so that you can clear it afterwards.
+  // TODO [OK]: Set an interval to 1 sec, that calls the 'tick' function. Store the interval reference to the global 'interval' variable, so that you can clear it afterwards.
+  interval = window.setInterval(tick, 1 * 1000);
 });
 
 /*
  * Stop button
  * -------------------- */
 
-stopButton.addEventListener('click', () => {
-  // TODO: Reset the remaining seconds to their initial value
-  // TODO: Stop/Clear the interval
-  // TODO: Use the appopriate (existing) function to show the remaining time on the page
+stopButton.addEventListener('click', stop = () => { //modified arrow function name so i can use it in tick function
+  // TODO [OK]: Reset the remaining seconds to their initial value
+  remainingSec = TOTAL_SEC;
+  // TODO [OK]: Stop/Clear the interval
+  clearInterval(interval);
+  // TODO [OK]: Use the appopriate (existing) function to show the remaining time on the page
+  show();
 });
 
 /*
@@ -60,8 +65,10 @@ stopButton.addEventListener('click', () => {
  * -------------------- */
 
 resetButton.addEventListener('click', () => {
-  // TODO: Reset the remaining seconds to their initial value
-  // TODO: Use the appopriate function to show the remaining time on the page
+  // TODO [OK]: Reset the remaining seconds to their initial value
+  remainingSec = TOTAL_SEC;
+  // TODO [OK]: Use the appopriate function to show the remaining time on the page
+  show();
 });
 
 /*
@@ -69,7 +76,8 @@ resetButton.addEventListener('click', () => {
  * -------------------- */
 
 pauseButton.addEventListener('click', () => {
-  // TODO: Clear the interval
+  // TODO [OK]: Clear the interval
+  clearInterval(interval);
 });
 
 /*
