@@ -1,13 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0 auto;
+  background: radial-gradient(circle, rgba(221,45,45,1),#000);
+  height: 100vh;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {
   font-size: 3em;
 }
 
-h1, h2 {
+h1,h2{
   text-align: center;
 }
 
@@ -18,17 +29,30 @@ h1, h2 {
 }
 
 #controls {
+  margin-top: 40px;
   text-align: center;
 }
 
-p {
-  text-align: justify;
-}
-
 img {
-  border: 1px dashed gray;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: -1;
 }
 
-body, img {
-  width: 720px;
+button {
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 2px solid black;
+  font-weight: bolder;
+}
+
+@media only screen and (max-width:1200px) {
+    #clock-cont {
+      background-color: rgba(0, 0, 0, 0.80);
+      width: 100%;
+      padding-bottom: 25px;
+    }
 }
